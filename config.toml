@@ -52,6 +52,7 @@ apkmirror-dlurl = "https://www.apkmirror.com/apk/proton-technologies-ag/protonvp
 uptodown-dlurl = "https://protonvpn.en.uptodown.com/android"
 
 [Pocket-Casts]
+enabled = false
 app-name = "PocketCasts"
 patches-source = "rushiranpise/morphe-patches"
 cli-source = "MorpheApp/morphe-cli"
@@ -60,3 +61,22 @@ build-mode = "apk"
 arch = "arm64-v8a"
 version = "latest"
 apkmirror-dlurl = "https://www.apkmirror.com/apk/automattic-inc/pocket-casts/"
+
+[NokoPrint]
+app-name = "NokoPrint"
+patches-source = "jkennethcarino/adobo"
+# REMOVED: 'Block ads, trackers, and analytics' from this list to avoid conflict
+included-patches = "'Disable mobile ads' 'Deactivate Firebase Analytics' 'Deactivate Firebase Performance Monitoring' 'Spoof Advertising ID'"
+cli-source = "MorpheApp/morphe-cli"
+rv-brand = "Morphe"
+build-mode = "apk"
+arch = "arm64-v8a"
+version = "latest"
+apkmirror-dlurl = "https://www.apkmirror.com/apk/nokoprint-llc/"
+uptodown-dlurl = "https://nokoprint.en.uptodown.com/android"
+patcher-args = """\
+-e 'Block ads, trackers, and analytics' \
+-Ohosts-file=https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts \
+-Oredirection-ip=0.0.0.0 \
+-Owildcard-blocking=true \
+"""
